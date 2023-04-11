@@ -4,14 +4,17 @@ import java.util.Scanner;
 
 public class Ex03 {
     public int solution(int n, int k, int[] array) {
-        int answer, sum=0;
-        for(int i=0; i<k; i++) sum+=array[i];
-        answer=sum;
-        for(int i=k; i<n; i++){
-            sum+=(array[i]-array[i-k]);
-            answer=Math.max(answer, sum);
+        int sum = 0;
+        for(int i = 0; i < k; i++) sum += array[i];
+
+        int result = sum;
+
+        for(int i = k; i < n; i++) {
+            sum = sum + array[i] - array[i - k];
+            if(result < sum) result = sum;
         }
-        return answer;
+
+        return result;
     }
 
     public static void main(String[] args) {
